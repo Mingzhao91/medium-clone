@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "medium-clone"
+  "cli": {
+    "analytics": false
+  }
 }
