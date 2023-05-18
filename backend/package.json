@@ -8,6 +8,7 @@
   "license": "ISC",
   "scripts": {
     "start": "node src/bin/server",
+    "start-containers": "docker-compose up",
     "dev": "nodemon src/bin/server",
     "db:load": "knex seed:run",
     "db:migrate": "knex migrate:latest",
