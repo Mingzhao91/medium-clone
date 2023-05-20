@@ -11,7 +11,7 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: null,
   isLoggedIn: null,
-  validationError: null,
+  validationErrors: null,
 };
 
 export const authReducer = createReducer(
@@ -21,7 +21,7 @@ export const authReducer = createReducer(
     (state): AuthStateInterface => ({
       ...state,
       isSubmitting: true,
-      validationError: null,
+      validationErrors: null,
     })
   ),
   on(
@@ -39,7 +39,7 @@ export const authReducer = createReducer(
       ...state,
       isSubmitting: false,
       isLoggedIn: false,
-      validationError: action.errors,
+      validationErrors: action.errors,
     })
   )
 );
