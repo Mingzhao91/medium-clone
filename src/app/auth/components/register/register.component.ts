@@ -4,9 +4,11 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { registerAction } from '../../store/actions';
+import { isSumbittingSelector } from '../../store/selector';
 
 @Component({
   selector: 'mc-register',
@@ -15,11 +17,17 @@ import { registerAction } from '../../store/actions';
 })
 export class RegisterComponent implements OnInit {
   form: UntypedFormGroup;
+  isSubmitting$: Observable<boolean>;
 
   constructor(private fb: UntypedFormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.initializeValues();
+  }
+
+  initializeValues(): void {
+    this.isSubmitting$ = this.store.pipe(select(isSumbittingSelector));
   }
 
   initializeForm(): void {
