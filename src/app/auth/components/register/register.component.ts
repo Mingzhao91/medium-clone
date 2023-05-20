@@ -7,7 +7,7 @@ import {
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { registerAction } from '../../store/register.actions';
+import { registerAction } from '../../store/actions/register.actions';
 import { isSumbittingSelector } from '../../store/selector';
 
 @Component({
