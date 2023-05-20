@@ -7,7 +7,7 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
 };
 
-const authReducer = createReducer(
+export const authReducer = createReducer(
   initialState,
   on(
     registerAction,
