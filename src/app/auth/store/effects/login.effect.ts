@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
@@ -12,6 +13,7 @@ import { CurrentUserInterface } from '../../../shared/types/current-user.interfa
 import { AuthService } from '../../services/auth.service';
 import { PersistanceService } from '../../../shared/services/persistance.service';
 
+@Injectable()
 export class loginEffects {
   constructor(
     private router: Router,
