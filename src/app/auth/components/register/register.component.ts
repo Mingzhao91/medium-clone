@@ -12,8 +12,8 @@ import {
   isSumbittingSelector,
   validationErrorsSelector,
 } from '../../store/selector';
-import { RegisterRequestInterface } from '../../types/registerRequest.interface';
-import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
+import { RegisterRequestInterface } from '../../types/register-request.interface';
+import { BackendErrorsInterface } from 'src/app/shared/types/backend-errors.interface';
 
 @Component({
   selector: 'mc-register',

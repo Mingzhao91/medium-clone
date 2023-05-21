@@ -10,7 +10,7 @@ import {
   registerFailureAction,
   registerSuccessAction,
 } from '../actions/register.actions';
-import { CurrentUserInterface } from '../../../shared/types/currentUser.interface';
+import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { PersistanceService } from 'src/app/shared/services/persistance.service';
 
 @Injectable()

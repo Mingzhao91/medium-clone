@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
-import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
-import { RegisterRequestInterface } from '../types/registerRequest.interface';
-import { AuthResponseInterface } from '../types/authResponse.interface';
+import { CurrentUserInterface } from '../../shared/types/current-user.interface';
+import { RegisterRequestInterface } from '../types/register-request.interface';
+import { AuthResponseInterface } from '../types/auth-response.interface';
 
 @Injectable({
   providedIn: 'root',
