@@ -22,7 +22,6 @@ import { loginAction } from '../../store/actions/login.actions';
 @Component({
   selector: 'mc-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,

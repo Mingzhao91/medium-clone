@@ -21,7 +21,6 @@ import { BackendErrorMessagesComponent } from '../../../shared/components/backen
 @Component({
   selector: 'mc-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,
