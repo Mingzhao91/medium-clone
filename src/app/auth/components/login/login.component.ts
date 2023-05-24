@@ -11,10 +11,9 @@ import { Store, select } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 
 import {
-  isSumbittingSelector,
-  validationErrorsSelector,
-} from '../../store/selector';
-
+  selectIsSubmitting,
+  selectValidationErrors,
+} from '../../store/reducers';
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 import { LoginRequestInterface } from '../../types/login-request.interface';
 import { authActions } from '../../store/actions';
@@ -36,8 +35,8 @@ export class LoginComponent {
   });
 
   data$ = combineLatest({
-    isSubmitting: this.store.pipe(select(isSumbittingSelector)),
-    backendErrors: this.store.pipe(select(validationErrorsSelector)),
+    isSubmitting: this.store.pipe(select(selectIsSubmitting)),
+    backendErrors: this.store.pipe(select(selectValidationErrors)),
   });
 
   constructor(private fb: FormBuilder, private store: Store) {}

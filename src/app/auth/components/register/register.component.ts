@@ -12,9 +12,9 @@ import { combineLatest } from 'rxjs';
 
 import { authActions } from '../../store/actions';
 import {
-  isSumbittingSelector,
-  validationErrorsSelector,
-} from '../../store/selector';
+  selectIsSubmitting,
+  selectValidationErrors,
+} from '../../store/reducers';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 
@@ -36,8 +36,8 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
   data$ = combineLatest({
-    isSubmitting: this.store.pipe(select(isSumbittingSelector)),
-    backendErrors: this.store.pipe(select(validationErrorsSelector)),
+    isSubmitting: this.store.pipe(select(selectIsSubmitting)),
+    backendErrors: this.store.pipe(select(selectValidationErrors)),
   });
 
   constructor(private fb: FormBuilder, private store: Store) {}
