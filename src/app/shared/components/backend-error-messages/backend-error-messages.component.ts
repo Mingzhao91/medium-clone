@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BackendErrorsInterface } from '../../../../types/backend-errors.interface';
+import { BackendErrorsInterface } from '../../types/backend-errors.interface';
 
 @Component({
   selector: 'mc-backend-error-messages',
   templateUrl: './backend-error-messages.component.html',
-  styleUrls: ['./backend-error-messages.component.scss'],
   standalone: true,
   imports: [CommonModule],
 })
