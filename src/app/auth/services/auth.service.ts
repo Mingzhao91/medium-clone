@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 import { CurrentUserInterface } from '../../shared/types/current-user.interface';
 import { RegisterRequestInterface } from '../types/register-request.interface';
 import { AuthResponseInterface } from '../types/auth-response.interface';
-import { LoginRequestInterface } from '../types/login-request.interface.';
+import { LoginRequestInterface } from '../types/login-request.interface';
 
 @Injectable({
   providedIn: 'root',
