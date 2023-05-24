@@ -16,7 +16,7 @@ import {
   validationErrorsSelector,
 } from '../../store/selector';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
-import { BackendErrorMessagesComponent } from '../../../shared/modules/backend-error-messages/components/backend-error-messages/backend-error-messages.component';
+import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 
 @Component({
   selector: 'mc-register',
