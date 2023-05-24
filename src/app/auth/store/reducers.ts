@@ -53,8 +53,8 @@ const authFeature = createFeature({
 });
 
 export const {
-  name,
-  reducer,
+  name: authFeatureKey,
+  reducer: authReducer,
   selectIsSubmitting,
   selectIsLoading,
   selectCurrentUser,
