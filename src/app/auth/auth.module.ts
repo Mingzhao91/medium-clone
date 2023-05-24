@@ -12,15 +12,10 @@ import { RegisterEffect } from './store/effects/register.effect';
 import { loginEffects } from './store/effects/login.effect';
 import { BackendErrorMessagesModule } from '../shared/modules/backend-error-messages/backend-error-messages.module';
 
-const routes: Route[] = [
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
-];
+const routes: Route[] = [];
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [],
   imports: [
     CommonModule,
     HttpClientModule,
