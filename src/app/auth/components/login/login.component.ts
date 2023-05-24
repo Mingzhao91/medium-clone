@@ -17,8 +17,7 @@ import {
 
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 import { LoginRequestInterface } from '../../types/login-request.interface';
-import { loginAction } from '../../store/actions/login.actions';
-
+import { authActions } from '../../store/actions';
 @Component({
   selector: 'mc-login',
   templateUrl: './login.component.html',
@@ -48,6 +47,6 @@ export class LoginComponent {
       user: this.form.getRawValue(),
     };
 
-    this.store.dispatch(loginAction({ request }));
+    this.store.dispatch(authActions.login({ request }));
   }
 }

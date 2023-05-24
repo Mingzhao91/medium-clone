@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 
-import { registerAction } from '../../store/actions/register.actions';
+import { authActions } from '../../store/actions';
 import {
   isSumbittingSelector,
   validationErrorsSelector,
@@ -46,6 +46,6 @@ export class RegisterComponent {
     const request: RegisterRequestInterface = {
       user: this.form.value.getRawValue(),
     };
-    this.store.dispatch(registerAction({ request }));
+    this.store.dispatch(authActions.register({ request }));
   }
 }
