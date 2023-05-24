@@ -1,74 +1,62 @@
-import { createReducer, on } from '@ngrx/store';
+import { routerNavigationAction } from '@ngrx/router-store';
+import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { AuthStateInterface } from '../types/auth-state.interface';
-import {
-  registerAction,
-  registerFailureAction,
-  registerSuccessAction,
-} from './actions/register.actions';
-import {
-  loginAction,
-  loginFailureAction,
-  loginSuccessAction,
-} from './actions/login.actions';
+import { authActions } from './actions';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
-  currentUser: null,
-  isLoggedIn: null,
+  isLoading: false,
+  currentUser: undefined,
   validationErrors: null,
 };
 
-export const authReducer = createReducer(
-  initialState,
-  on(
-    registerAction,
-    (state): AuthStateInterface => ({
+const authFeature = createFeature({
+  name: 'auth',
+  reducer: createReducer(
+    initialState,
+    on(authActions.register, (state) => ({
       ...state,
       isSubmitting: true,
       validationErrors: null,
-    })
-  ),
-  on(
-    registerSuccessAction,
-    (state, action): AuthStateInterface => ({
+    })),
+    on(authActions.registerSuccess, (state, action) => ({
       ...state,
       isSubmitting: false,
-      isLoggedIn: true,
       currentUser: action.currentUser,
-    })
-  ),
-  on(
-    registerFailureAction,
-    (state, action): AuthStateInterface => ({
+    })),
+    on(authActions.registerFailure, (state, action) => ({
       ...state,
       isSubmitting: false,
       validationErrors: action.errors,
-    })
-  ),
-  on(
-    loginAction,
-    (state): AuthStateInterface => ({
+    })),
+    on(authActions.login, (state) => ({
       ...state,
       isSubmitting: true,
       validationErrors: null,
-    })
-  ),
-  on(
-    loginSuccessAction,
-    (state, action): AuthStateInterface => ({
+    })),
+    on(authActions.loginSuccess, (state, action) => ({
       ...state,
       isSubmitting: false,
       currentUser: action.currentUser,
-      isLoggedIn: true,
-    })
-  ),
-  on(
-    loginFailureAction,
-    (state, action): AuthStateInterface => ({
+    })),
+    on(authActions.loginFailure, (state, action) => ({
       ...state,
       isSubmitting: false,
       validationErrors: action.errors,
-    })
-  )
-);
+    })),
+    on(routerNavigationAction, (state) => ({
+      ...state,
+      validationErrors: null,
+    }))
+  ),
+});
+
+export const {
+  name,
+  reducer,
+  selectIsSubmitting,
+  selectIsLoading,
+  selectCurrentUser,
+  selectValidationErrors,
+} = authFeature;
