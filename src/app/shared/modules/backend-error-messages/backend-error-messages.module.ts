@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BackendErrorMessagesComponent } from './components/backend-error-messages/backend-error-messages.component';
 
 @NgModule({
-  declarations: [BackendErrorMessagesComponent],
+  declarations: [],
   imports: [CommonModule],
-  exports: [BackendErrorMessagesComponent],
+  exports: [],
 })
 export class BackendErrorMessagesModule {}
