@@ -8,7 +8,7 @@ import { environment } from '../../../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class FeedServiceService {
+export class FeedService {
   constructor(private http: HttpClient) {}
 
   getFeed(url: string): Observable<GetFeedResponseInterface> {
