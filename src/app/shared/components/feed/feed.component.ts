@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -26,7 +32,7 @@ import { TagListComponent } from '../tag-list/tag-list.component';
   ],
   templateUrl: './feed.component.html',
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnChanges {
   @Input() apiUrl: string = '';
 
   data$ = combineLatest({
@@ -49,6 +55,17 @@ export class FeedComponent implements OnInit {
       this.currentPage = Number(queryParams['page'] || '1');
       this.fetchFeed();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // get feed if user clicks on different tag
+    const isApiUrlChanged =
+      !changes['apiUrl'].firstChange &&
+      changes['apiUrl'].currentValue !== changes['apiUrl'].previousValue;
+
+    if (isApiUrlChanged) {
+      this.fetchFeed();
+    }
   }
 
   fetchFeed(): void {
