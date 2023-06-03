@@ -13,11 +13,16 @@ import { appRoutes } from './app/app.routes';
 import { authFeatureKey, authReducer } from './app/auth/store/reducers';
 import * as authEffects from './app/auth/store/effects';
 import * as feedEffects from './app/shared/components/feed/store/effects';
+import * as popularTagsEffects from './app/shared/components/popular-tags/store/effects';
 import { authInterceptor } from './app/shared/services/auth.interceptor';
 import {
   feedFeatureKey,
   feedReducer,
 } from './app/shared/components/feed/store/reducers';
+import {
+  popularTagsFeatureKey,
+  popularTagsReduer,
+} from './app/shared/components/popular-tags/store/reducers';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -29,7 +34,8 @@ bootstrapApplication(AppComponent, {
     provideRouterStore(),
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
-    provideEffects(authEffects, feedEffects),
+    provideState(popularTagsFeatureKey, popularTagsReduer),
+    provideEffects(authEffects, feedEffects, popularTagsEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
