@@ -11,6 +11,7 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
 import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { TagListComponent } from '../tag-list/tag-list.component';
 
 @Component({
   selector: 'mc-feed',
@@ -21,6 +22,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TagListComponent,
   ],
   templateUrl: './feed.component.html',
 })
