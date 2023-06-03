@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { feedActions } from './store/actions';
 import { combineLatest } from 'rxjs';
+import queryString from 'query-string';
 
 import { selectError, selectFeedData, selectIsLoading } from './store/reducers';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
@@ -49,6 +50,19 @@ export class FeedComponent implements OnInit {
   }
 
   fetchFeed(): void {
-    this.store.dispatch(feedActions.getFeed({ url: this.apiUrl }));
+    const offset = this.currentPage * this.limit - this.limit;
+    const parseUrl = queryString.parseUrl(this.apiUrl);
+    const stringifyParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parseUrl.query,
+    });
+    const apiUrlWithParams = `${parseUrl.url}?${stringifyParams}`;
+
+    // /articles?limit=20&offset=0
+    // page 1 - 0
+    // page 2 - 20
+    // page 3 - 40
+    this.store.dispatch(feedActions.getFeed({ url: apiUrlWithParams }));
   }
 }
