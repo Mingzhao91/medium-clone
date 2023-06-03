@@ -7,11 +7,12 @@ import { combineLatest } from 'rxjs';
 
 import { selectError, selectFeedData, selectIsLoading } from './store/reducers';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'mc-feed',
   standalone: true,
-  imports: [CommonModule, RouterLink, ErrorMessageComponent],
+  imports: [CommonModule, RouterLink, ErrorMessageComponent, LoadingComponent],
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit {
