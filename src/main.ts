@@ -11,10 +11,10 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
 import { authFeatureKey, authReducer } from './app/auth/store/reducers';
-import * as authEffects from './app/auth/store/effects';
-import * as feedEffects from './app/shared/components/feed/store/effects';
-import * as popularTagsEffects from './app/shared/components/popular-tags/store/effects';
-import { authInterceptor } from './app/shared/services/auth.interceptor';
+import {
+  articleFeatureKey,
+  articleReducer,
+} from './app/article/store/reducers';
 import {
   feedFeatureKey,
   feedReducer,
@@ -23,6 +23,11 @@ import {
   popularTagsFeatureKey,
   popularTagsReduer,
 } from './app/shared/components/popular-tags/store/reducers';
+import * as authEffects from './app/auth/store/effects';
+import * as feedEffects from './app/shared/components/feed/store/effects';
+import * as popularTagsEffects from './app/shared/components/popular-tags/store/effects';
+import * as articleEffects from './app/article/store/effects';
+import { authInterceptor } from './app/shared/services/auth.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -35,7 +40,13 @@ bootstrapApplication(AppComponent, {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReduer),
-    provideEffects(authEffects, feedEffects, popularTagsEffects),
+    provideState(articleFeatureKey, articleReducer),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      popularTagsEffects,
+      articleEffects
+    ),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
