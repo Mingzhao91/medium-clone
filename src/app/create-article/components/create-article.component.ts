@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { combineLatest } from 'rxjs';
 
 import { ArticleFormValuesInterface } from '../../shared/components/article-form/types/article-form-values.interface';
 import { ArticleFormComponent } from '../../shared/components/article-form/article-form.component';
+import { selectIsSubmitting, selectValidationErrors } from '../store/reducers';
+import { ArticleRequestInterface } from '../../shared/types/article-request';
+import { createArticleActions } from '../store/actions';
 
 @Component({
   selector: 'mc-create-article',
@@ -18,7 +23,17 @@ export class CreateArticleComponent {
     tagList: [],
   };
 
+  data$ = combineLatest({
+    isSubmitting: this.store.select(selectIsSubmitting),
+    backendErrors: this.store.select(selectValidationErrors),
+  });
+
+  constructor(private store: Store) {}
+
   onSubmit(articleFormValues: ArticleFormValuesInterface): void {
-    console.log('onSubmit in create article', articleFormValues);
+    const request: ArticleRequestInterface = {
+      article: articleFormValues,
+    };
+    this.store.dispatch(createArticleActions.createArticle({ request }));
   }
 }
