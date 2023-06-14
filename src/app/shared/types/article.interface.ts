@@ -3,13 +3,13 @@ import { ProfileInterface } from './profile.interface';
 
 export interface ArticleInterface {
   body: string;
-  createdAt: string;
+  createdAt?: string;
   description: string;
-  favourited: boolean;
-  favoritesCount: number;
-  slug: string;
+  favourited?: boolean;
+  favoritesCount?: number;
+  slug?: string;
   tagList: PopularTagType[];
   title: string;
-  updatedAt: string;
-  author: ProfileInterface;
+  updatedAt?: string;
+  author?: ProfileInterface;
 }
