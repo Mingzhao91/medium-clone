@@ -1,8 +1,8 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
+import { routerNavigatedAction } from '@ngrx/router-store';
 
 import { CreateArticleStateInface } from '../types/create-article-state.interface';
 import { createArticleActions } from './actions';
-import { routerNavigatedAction } from '@ngrx/router-store';
 
 const initialState: CreateArticleStateInface = {
   isSubmitting: false,
