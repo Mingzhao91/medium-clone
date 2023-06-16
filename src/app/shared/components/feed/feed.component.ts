@@ -18,6 +18,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { TagListComponent } from '../tag-list/tag-list.component';
+import { AddToFavoritesComponent } from '../add-to-favorites/add-to-favorites.component';
 
 @Component({
   selector: 'mc-feed',
@@ -29,6 +30,7 @@ import { TagListComponent } from '../tag-list/tag-list.component';
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
+    AddToFavoritesComponent,
   ],
   templateUrl: './feed.component.html',
 })
