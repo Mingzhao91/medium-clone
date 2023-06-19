@@ -12,7 +12,7 @@ import { BackendErrorsInterface } from '../../types/backend-errors.interface';
 export class BackendErrorMessagesComponent implements OnInit {
   @Input() backendErrors: BackendErrorsInterface = {};
 
-  errorMessages: string[];
+  errorMessages?: string[];
 
   ngOnInit(): void {
     this.errorMessages = Object.keys(this.backendErrors).map((name: string) => {

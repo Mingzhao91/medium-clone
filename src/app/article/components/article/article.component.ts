@@ -46,7 +46,7 @@ export class ArticleComponent implements OnInit {
         return false;
       }
 
-      return article.author.username === currentUser.username;
+      return article.author?.username === currentUser.username;
     })
   );
   data$ = combineLatest({
