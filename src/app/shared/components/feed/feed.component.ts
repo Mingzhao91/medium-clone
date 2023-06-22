@@ -4,6 +4,7 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
@@ -35,6 +36,10 @@ import { AddToFavoritesComponent } from '../add-to-favorites/add-to-favorites.co
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit, OnChanges {
+  router = inject(Router);
+  store = inject(Store);
+  route = inject(ActivatedRoute);
+
   @Input() apiUrl: string = '';
 
   data$ = combineLatest({
@@ -45,12 +50,6 @@ export class FeedComponent implements OnInit, OnChanges {
   limit = environment.limit;
   baseUrl = this.router.url.split('?')[0];
   currentPage = 0;
-
-  constructor(
-    private store: Store,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((queryParams: Params) => {

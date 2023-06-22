@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../../../environments/environment';
@@ -10,7 +10,7 @@ import { ProfileInterface } from '../../../../shared/types/profile.interface';
   providedIn: 'root',
 })
 export class FollowUserService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   getUrl(userName: string) {
     return `${environment.apiUrl}/profiles/${userName}/follow`;

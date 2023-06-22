@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,6 +20,8 @@ import { BackendErrorMessagesComponent } from '../backend-error-messages/backend
   templateUrl: './article-form.component.html',
 })
 export class ArticleFormComponent implements OnInit {
+  fb = inject(FormBuilder);
+
   @Input() initialValues?: ArticleFormValuesInterface;
   @Input() isSubmitting: boolean = false;
   @Input() errors: BackendErrorsInterface | null = null;
@@ -24,8 +33,6 @@ export class ArticleFormComponent implements OnInit {
     body: '',
     tagList: '',
   });
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initializeForm();

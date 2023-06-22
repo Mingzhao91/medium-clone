@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -10,7 +10,7 @@ import { ArticleResponseInterface } from '../types/article-response.interface';
   providedIn: 'root',
 })
 export class ArticleService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   getArticle(slug: string): Observable<ArticleInterface> {
     const fullUrl = `${environment.apiUrl}/articles/${slug}`;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,10 +20,10 @@ import { FeedTogglerComponent } from '../../../shared/components/feed-toggler/fe
   templateUrl: './tag-feed.component.html',
 })
 export class TagFeedComponent implements OnInit {
+  route = inject(ActivatedRoute);
+
   apiUrl: string = '';
   tagName: string = '';
-
-  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

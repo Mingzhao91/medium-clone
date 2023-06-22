@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
@@ -34,6 +34,10 @@ import { FollowUserComponent } from '../../../shared/components/follow-user/foll
   templateUrl: './user-profile.component.html',
 })
 export class UserProfileComponent implements OnInit {
+  route = inject(ActivatedRoute);
+  store = inject(Store);
+  router = inject(Router);
+
   slug: string = '';
   isCurrentUserProfile$ = combineLatest({
     currentUser: this.store.pipe(
@@ -60,12 +64,6 @@ export class UserProfileComponent implements OnInit {
     userProfile: this.store.select(selectUserProfileData),
     isCurrentUserProfile: this.isCurrentUserProfile$,
   });
-
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private store: Store
-  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {

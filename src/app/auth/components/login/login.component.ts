@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -29,6 +29,9 @@ import { authActions } from '../../store/actions';
   ],
 })
 export class LoginComponent {
+  fb = inject(FormBuilder);
+  store = inject(Store);
+
   form: FormGroup = this.fb.nonNullable.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -38,8 +41,6 @@ export class LoginComponent {
     isSubmitting: this.store.pipe(select(selectIsSubmitting)),
     backendErrors: this.store.pipe(select(selectValidationErrors)),
   });
-
-  constructor(private fb: FormBuilder, private store: Store) {}
 
   onSubmit(): void {
     const request: LoginRequestInterface = {

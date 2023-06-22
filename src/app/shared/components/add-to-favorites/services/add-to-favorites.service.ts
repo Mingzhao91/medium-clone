@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
   providedIn: 'root',
 })
 export class AddToFavoritesService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   getUrl(slug: string): string {
     return `${environment.apiUrl}/articles/${slug}/favorite`;

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -11,10 +11,10 @@ import { followUserActions } from './store/actions';
   templateUrl: './follow-user.component.html',
 })
 export class FollowUserComponent {
+  store = inject(Store);
+
   @Input() isFollowed: boolean = false;
   @Input() userNameSlug: string = '';
-
-  constructor(private store: Store) {}
 
   handleFollow(): void {
     this.store.dispatch(

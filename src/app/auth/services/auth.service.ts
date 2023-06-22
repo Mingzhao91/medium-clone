@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -13,7 +13,7 @@ import { CurrentUserRequestInterface } from 'src/app/shared/types/current-user-r
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   getUser(response: AuthResponseInterface): CurrentUserInterface {
     return response.user;

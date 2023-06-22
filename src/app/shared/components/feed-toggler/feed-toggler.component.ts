@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -12,9 +12,9 @@ import { selectCurrentUser } from '../../../auth/store/reducers';
   templateUrl: './feed-toggler.component.html',
 })
 export class FeedTogglerComponent {
+  store = inject(Store);
+
   @Input() tagName?: string;
 
   currentUser$ = this.store.select(selectCurrentUser);
-
-  constructor(private store: Store) {}
 }

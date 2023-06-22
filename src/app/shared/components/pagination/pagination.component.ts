@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { UtilsService } from '../../services/utils.service';
   templateUrl: './pagination.component.html',
 })
 export class PaginationComponent implements OnInit {
+  utilsService = inject(UtilsService);
+
   @Input() total = 0;
   @Input() limit = 0;
   @Input() currentPage = 1;
@@ -18,8 +20,6 @@ export class PaginationComponent implements OnInit {
 
   pagesCount = 1;
   pages: number[] = [];
-
-  constructor(private utilsService: UtilsService) {}
 
   ngOnInit(): void {
     this.pagesCount = Math.ceil(this.total / this.limit);

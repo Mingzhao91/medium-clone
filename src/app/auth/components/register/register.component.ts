@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -30,6 +30,9 @@ import { BackendErrorMessagesComponent } from '../../../shared/components/backen
   ],
 })
 export class RegisterComponent {
+  fb = inject(FormBuilder);
+  store = inject(Store);
+
   form: FormGroup = this.fb.nonNullable.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -39,8 +42,6 @@ export class RegisterComponent {
     isSubmitting: this.store.pipe(select(selectIsSubmitting)),
     backendErrors: this.store.pipe(select(selectValidationErrors)),
   });
-
-  constructor(private fb: FormBuilder, private store: Store) {}
 
   onSubmit(): void {
     const request: RegisterRequestInterface = {

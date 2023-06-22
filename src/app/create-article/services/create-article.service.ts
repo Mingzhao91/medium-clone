@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -8,7 +8,7 @@ import { ArticleInterface } from '../../shared/types/article.interface';
 
 @Injectable()
 export class CreateArticleService {
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
 
   createArticle(
     articleRequest: ArticleRequestInterface

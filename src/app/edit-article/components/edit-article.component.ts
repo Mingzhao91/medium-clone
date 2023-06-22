@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
@@ -24,6 +24,9 @@ import { ArticleInterface } from '../../shared/types/article.interface';
   templateUrl: './edit-article.component.html',
 })
 export class EditArticleComponent implements OnInit {
+  route = inject(ActivatedRoute);
+  store = inject(Store);
+
   slug = this.route.snapshot.paramMap.get('slug') ?? '';
   initialValues$: Observable<ArticleFormValuesInterface> = this.store.pipe(
     select(selectArticle),
@@ -44,8 +47,6 @@ export class EditArticleComponent implements OnInit {
     isLoading: this.store.select(selectIsLoading),
     initialValues: this.initialValues$,
   });
-
-  constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.store.dispatch(editArticleActions.getArticle({ slug: this.slug }));

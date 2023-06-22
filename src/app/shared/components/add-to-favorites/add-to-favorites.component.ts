@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -11,11 +11,11 @@ import { addToFavoritesActions } from './store/actions';
   templateUrl: './add-to-favorites.component.html',
 })
 export class AddToFavoritesComponent {
+  store = inject(Store);
+
   @Input() isFavorited: boolean = false;
   @Input() favoritesCount: number = 0;
   @Input() articleSlug: string = '';
-
-  constructor(private store: Store) {}
 
   handleLike(): void {
     this.store.dispatch(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -20,13 +20,13 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
   imports: [CommonModule, RouterLink, LoadingComponent, ErrorMessageComponent],
 })
 export class PopularTagsComponent implements OnInit {
+  store = inject(Store);
+
   data$ = combineLatest({
     popularTags: this.store.select(selectPopularTagsData),
     isLoading: this.store.select(selectIsLoading),
     error: this.store.select(selectError),
   });
-
-  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(popularTagsActions.getPopularTags());
