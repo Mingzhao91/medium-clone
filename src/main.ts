@@ -23,6 +23,7 @@ import * as authEffects from './app/auth/store/effects';
 import * as feedEffects from './app/shared/components/feed/store/effects';
 import * as popularTagsEffects from './app/shared/components/popular-tags/store/effects';
 import * as addToFavoritesEffects from './app/shared/components/add-to-favorites/store/effects';
+import * as followUserEffects from './app/shared/components/follow-user/store/effects';
 import { authInterceptor } from './app/shared/services/auth.interceptor';
 
 bootstrapApplication(AppComponent, {
@@ -40,7 +41,8 @@ bootstrapApplication(AppComponent, {
       authEffects,
       feedEffects,
       popularTagsEffects,
-      addToFavoritesEffects
+      addToFavoritesEffects,
+      followUserEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
