@@ -11,7 +11,9 @@
             <h4>{{data.userProfile.username}}</h4>
             <p>{{data.userProfile.bio}}</p>
             <div>
-              FOLLOW USER BUTTON
+              <mc-follow-user *ngIf="!data.isCurrentUserProfile"
+                              [isFollowed]="data.userProfile.following"
+                              [userNameSlug]="data.userProfile.username"></mc-follow-user>
               <a *ngIf="data.isCurrentUserProfile"
                  class="btn btn-sm btn-outline-secondary action-btn"
                  routerLink="/settings">Edit Profile Settings</a>

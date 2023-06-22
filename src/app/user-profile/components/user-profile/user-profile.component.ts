@@ -19,11 +19,18 @@ import { selectCurrentUser } from '../../../auth/store/reducers';
 import { UserProfileInterface } from '../../types/user-profile.interface';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { FeedComponent } from '../../../shared/components/feed/feed.component';
+import { FollowUserComponent } from '../../../shared/components/follow-user/follow-user.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, FeedComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    FeedComponent,
+    FollowUserComponent,
+  ],
   templateUrl: './user-profile.component.html',
 })
 export class UserProfileComponent implements OnInit {
