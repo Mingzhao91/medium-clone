@@ -14,22 +14,22 @@ This is a project to build a Medium clone using Angular and NgRx, following an [
 
 1. run Docker Desktop on your local machine.
 2. [Download](https://github.com/Mingzhao91/medium-clone/archive/refs/heads/main.zip) or clone the [repository](https://github.com/Mingzhao91/medium-clone.git) to your local machine.
-3. Run `npm install` inside the downloaded/cloned folder:
+3. Run `npm install` inside the medium-cloned folder:
 
 ```bash
 $ npm install
 ```
 
-4. Navigate to the backend folder and run `npm install`:
+4. Navigate to the backend folder and run `docker-compose build` to build services:
 
 ```bash
-$ npm install
+$ docker-compose build
 ```
 
-5. Run `npm start-containers` inside the backend folder to start Docker backend server locally.
+5. Navigate to the backend folder and run `docker-compose up` to aggregates the output of each container:
 
 ```bash
-$ npm start-containers
+$ docker-compose up
 ```
 
 6. Navigate to the top of level of the project and run `ng serve` to develop the application locally.
