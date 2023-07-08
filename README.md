@@ -1,27 +1,47 @@
 # MediumClone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+## Description
 
-## Development server
+This is a project to build a Medium clone using Angular and NgRx, following an [online course](https://www.udemy.com/course/angular-and-ngrx-building-real-project-from-scratch/) to enhance my understanding of NgRx and its practical implementation. This project aims to create a scalable application by utilizing NgRx store to manage various aspects such as the logged-in user's state, feed lists, and favorited posts. To optimize the application's performance, I have incorporated the latest Angular features such as using standalone components to encapsulate functionality, isolating state, as well as reducing the need for NgModules. The Medium clone application enables users to register and log in, read posts, create and edit their own posts, add posts to their favorites, and follow or unfollow other authors.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Install [Node.js](https://nodejs.org/en)
+- Install [Angular CLI](https://www.npmjs.com/package/@angular/cli)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to run it locally
 
-## Build
+1. run Docker Desktop on your local machine.
+2. [Download](https://github.com/Mingzhao91/medium-clone/archive/refs/heads/main.zip) or clone the [repository](https://github.com/Mingzhao91/medium-clone.git) to your local machine.
+3. Run `npm install` inside the downloaded/cloned folder:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+$ npm install
+```
 
-## Running unit tests
+4. Navigate to the backend folder and run `npm install`:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+$ npm install
+```
 
-## Running end-to-end tests
+5. Run `npm start-containers` inside the backend folder to start Docker backend server locally.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+$ npm start-containers
+```
 
-## Further help
+6. Navigate to the top of level of the project and run `ng serve` to develop the application locally.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+$ ng serve
+```
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+## Reference
+
+[Angular and NgRx - Building Real Project From Scratch](https://www.udemy.com/course/angular-and-ngrx-building-real-project-from-scratch)
