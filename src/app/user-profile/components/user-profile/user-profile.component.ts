@@ -42,8 +42,9 @@ export class UserProfileComponent implements OnInit {
   isCurrentUserProfile$ = combineLatest({
     currentUser: this.store.pipe(
       select(selectCurrentUser),
-      filter((currentUser): currentUser is CurrentUserInterface =>
-        Boolean(currentUser)
+      filter(
+        (currentUser): currentUser is CurrentUserInterface | null =>
+          currentUser !== undefined
       )
     ),
     userProfile: this.store.pipe(
@@ -55,7 +56,7 @@ export class UserProfileComponent implements OnInit {
   }).pipe(
     map(
       ({ currentUser, userProfile }) =>
-        currentUser.username === userProfile.username
+        currentUser?.username === userProfile.username
     )
   );
   data$ = combineLatest({
